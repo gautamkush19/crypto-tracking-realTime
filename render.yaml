@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: aurelian-crypto-terminal
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: COINGECKO_API_BASE
+        value: https://api.coingecko.com/api/v3
