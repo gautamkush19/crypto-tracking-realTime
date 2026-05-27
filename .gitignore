@@ -8,4 +8,8 @@ pnpm-debug.log*
 yarn-debug.log*
 server-dev*.log
 .DS_Store
-
+server-dev.log
+server-dev.err.log
+*.log
+.vscode
+.DS_Store

@@ -202,9 +202,8 @@ app.use((err, _req, res, _next) => {
   res.status(500).json({ message: 'Unexpected server error.' });
 });
 
-app.listen(port, () => {
-  console.log(`Aurelian running on http://localhost:${port}`);
-});
+
+export default app;
 
 async function proxyCoinGecko(req, res, pathname, params, ttlMs) {
   const url = new URL(`${coinGeckoBaseUrl}${pathname}`);
