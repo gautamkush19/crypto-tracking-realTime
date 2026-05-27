@@ -7,8 +7,8 @@
   "scripts": {
     "dev": "node server/index.js",
     "build": "tsc --noEmit && vite build",
-    "start": "cross-env NODE_ENV=production node server/index.js",
-    "preview": "cross-env NODE_ENV=production npm run build && node server/index.js"
+    "start": "node server/index.js",
+    "preview": "npm run build && node server/index.js"
   },
   "dependencies": {
     "@react-three/fiber": "^8.17.6",
@@ -33,9 +33,7 @@
     "@types/node": "^22.10.2",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
-    "@vercel/node": "^5.8.5",
     "autoprefixer": "^10.4.20",
-    "cross-env": "^7.0.3",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.2",
