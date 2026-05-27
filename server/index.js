@@ -186,14 +186,13 @@ if (isProduction) {
   app.get('*', (_req, res) => {
     res.sendFile(path.join(distPath, 'index.html'));
   });
-} else {
+} else if (!process.env.VERCEL) {
   const { createServer } = await import('vite');
   const vite = await createServer({
     root: projectRoot,
     server: { middlewareMode: true },
     appType: 'spa'
   });
-
   app.use(vite.middlewares);
 }
 
@@ -202,9 +201,13 @@ app.use((err, _req, res, _next) => {
   res.status(500).json({ message: 'Unexpected server error.' });
 });
 
-app.listen(port, () => {
-  console.log(`Aurelian running on http://localhost:${port}`);
-});
+if (!process.env.VERCEL) {
+  app.listen(port, () => {
+    console.log(`Aurelian running on http://localhost:${port}`);
+  });
+}
+
+export default app;
 
 async function proxyCoinGecko(req, res, pathname, params, ttlMs) {
   const url = new URL(`${coinGeckoBaseUrl}${pathname}`);
